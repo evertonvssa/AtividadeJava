@@ -16,7 +16,7 @@ public class Bilheteria {
     }
 
     public void registrarVendas(Vendas vendas){
-        this.totalIngressosVendidos += vendas.getValorTotal();
+        this.totalArrecadado += vendas.getValorTotal();
         this.totalIngressosVendidos += vendas.getQuantIngressos();
 
         String tipoIngressoAplicado = vendas.getTipoIngressoAplicado();

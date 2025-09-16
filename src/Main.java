@@ -24,16 +24,16 @@ public class Main {
             System.out.println("Informa a idade do cliente (0 a 120 anos): ");
             int idade = leitor.nextInt();
 
-            Vendas novaVenda = new Vendas(2, 2, 30);
+            Vendas venda = new Vendas(quantidade, tipoIngresso, idade);
 
-            novaVenda.calcularValorTotal();
+            venda.calcularValorTotal();
 
             System.out.println("\n   RESUMO DA COMPRA   ");
-            System.out.println("Quantidade de ingressos: " + novaVenda.getQuantIngressos());
-            System.out.println("Tipo de Ingresso Aplicado: " + novaVenda.getTipoIngressoAplicado());
-            System.out.printf("Valor Total: R$ %.2f\n", novaVenda.getValorTotal());
+            System.out.println("Quantidade de ingressos: " + venda.getQuantIngressos());
+            System.out.println("Tipo de Ingresso Aplicado: " + venda.getTipoIngressoAplicado());
+            System.out.printf("Valor Total: R$ %.2f\n", venda.getValorTotal());
 
-            if (novaVenda.getValorTotal() > 0) {
+            if (venda.getValorTotal() > 0) {
                 System.out.print("\nMétodo de Pagamento (Dinheiro/Cartao): ");
                 String metodoPagamento = leitor.next();
 
@@ -41,21 +41,21 @@ public class Main {
                     System.out.print("Valor pago pelo cliente: R$ ");
                     double valorPago = leitor.nextDouble();
 
-                    if (valorPago < novaVenda.getValorTotal()) {
+                    if (valorPago < venda.getValorTotal()) {
                         System.out.println("Valor insuficiente. Venda cancelada.");
                     } else {
-                        double troco = valorPago - novaVenda.getValorTotal();
+                        double troco = valorPago - venda.getValorTotal();
                         System.out.printf("Troco: R$ %.2f\n", troco);
                         System.out.println("Pagamento recebido. Obrigado!");
-                        bilheteria.registrarVendas(novaVenda);
+                        bilheteria.registrarVendas(venda);
                     }
                 } else { // Assume Cartão ou qualquer outra coisa
                     System.out.println("Transação com cartão confirmada. Obrigado!");
-                    bilheteria.registrarVendas(novaVenda);
+                    bilheteria.registrarVendas(venda);
                 }
             } else { // Se a venda for gratuita, não precisa de pagamento
                 System.out.println("Ingressos gratuitos emitidos com sucesso!");
-                bilheteria.registrarVendas(novaVenda);
+                bilheteria.registrarVendas(venda);
             }
 
             System.out.println("\n Atender o próximo Cliente? (S/N");
